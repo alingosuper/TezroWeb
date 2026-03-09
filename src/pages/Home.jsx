@@ -1,37 +1,36 @@
-import React from "react"
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function Home(){
-return(
+const Home = () => {
+  const navigate = useNavigate();
 
-<div>
+  return (
+    <div style={{ backgroundColor: '#000', color: '#fff', padding: '20px', minHeight: '100vh', fontFamily: 'sans-serif' }}>
+      <h1 style={{ color: '#FFD700', fontSize: '2.5rem' }}>Tezro Super App</h1>
+      <p style={{ fontSize: '1.2rem', lineHeight: '1.6' }}>
+        One Platform. Endless Possibilities. Tezro Super is a next-generation digital ecosystem...
+      </p>
+      
+      <button 
+        onClick={() => navigate('/register')} 
+        style={{ 
+          backgroundColor: '#FFD700', 
+          color: '#000', 
+          padding: '15px 30px', 
+          border: 'none', 
+          fontWeight: 'bold', 
+          cursor: 'pointer',
+          borderRadius: '5px',
+          fontSize: '1rem'
+        }}
+      >
+        Get Started
+      </button>
 
-<section className="hero">
+      <h2 style={{ marginTop: '40px', color: '#FFD700' }}>About Tezro</h2>
+      <p>Tezro Super is an advanced multi-service digital platform built to revolutionize the way people access services.</p>
+    </div>
+  );
+};
 
-<h1>Tezro Super App</h1>
-
-<p>
-One Platform. Endless Possibilities.
-Tezro Super is a next-generation digital ecosystem designed to connect users, businesses, drivers, vendors, and service providers on a single intelligent platform.
-</p>
-
-<button>Get Started</button>
-
-</section>
-
-
-<section className="about">
-
-<h2>About Tezro</h2>
-
-<p>
-Tezro Super is an advanced multi-service digital platform built to revolutionize the way people access services and run businesses.
-</p>
-
-</section>
-
-</div>
-
-)
-}
-
-export default Home
+export default Home;
