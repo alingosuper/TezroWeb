@@ -4,17 +4,17 @@ import { generateSecureToken } from "../security/FinalSecurityShield";
 
 export const registerUser = async (userData) => {
     const db = getDatabase(app);
-    const securityToken = generateSecureToken(); // شیلڈ سے ٹوکن لیں
+    const securityToken = generateSecureToken();
     
-    const newUserRef = ref(db, 'pending_approvals/' + userData.phone);
+    // موبائل نمبر کو بطور یونیک ID استعمال کرنا بہتر ہے
+    const newUserRef = ref(db, 'registrations/' + userData.phone);
     
-    // ڈیٹا کو ایڈمن کے 'Pending' سیکشن میں بھیجیں
     await set(newUserRef, {
         ...userData,
         token: securityToken,
-        status: "WAITING_FOR_ADMIN",
+        status: "pending", // ایڈمن کے لیے پینڈنگ اسٹیٹس
         registeredAt: new Date().toISOString()
     });
     
-    console.log("🛡️ Tezro Web: User sent to Admin for verification.");
+    console.log("🛡️ Tezro: Encrypted data sent to Admin.");
 };
